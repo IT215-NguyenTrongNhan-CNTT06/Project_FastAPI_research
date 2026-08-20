@@ -18,5 +18,5 @@ def get_db():
     db = LocalSession()
     try:
         yield db 
-    except: 
+    finally: 
         db.close()

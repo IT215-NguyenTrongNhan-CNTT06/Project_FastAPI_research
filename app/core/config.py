@@ -3,9 +3,9 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     # --- Cấu hình ứng dụng ---
-    APP_NAME: str = "Demo FastAPI"
+    APP_NAME: str = "RESEARCH GROUP MANAGEMENT API"
     APP_VERSION: str = "1.0.0"
-    APP_DESCRIPTION: str = "Ứng dụng mẫu Authentication & Authorization với FastAPI."
+    APP_DESCRIPTION: str = "Research Group"
 
     # --- Cấu hình Database ---
     DATABASE_URL: str = "mysql+pymysql://root:452007@localhost:3306/research_db"
