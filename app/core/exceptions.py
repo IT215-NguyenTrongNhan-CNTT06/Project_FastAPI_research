@@ -47,3 +47,17 @@ def validation_exception_handler(request: Request, exc: RequestValidationError):
         status_code=422,
         content=response_model.model_dump(mode="json")
     )
+
+def unhandled_exception_handler(request: Request, exc: Exception):
+    response_model = APIResponse(
+        success=False,
+        statusCode=500,
+        message="Lỗi hệ thống nội bộ (Internal Server Error)",
+        errors=str(exc),
+        timestamp=datetime.now(timezone.utc).isoformat(),
+        path=request.url.path
+    )
+    return JSONResponse(
+        status_code=500,
+        content=response_model.model_dump(mode="json")
+    )
