@@ -19,6 +19,10 @@ def NotFoundException(detail: str = "Khong tim thay tai nguyen") -> HTTPExceptio
     return HTTPException(status_code=404, detail=detail)
 
 
+def UnauthorizedException(detail: str = "Khong duoc phep truy cap") -> HTTPException:
+    return HTTPException(status_code=401,detail=detail)
+        
+        
 
 def http_exception_handler(request: Request, exc: HTTPException):
     response_model = APIResponse(
@@ -26,7 +30,7 @@ def http_exception_handler(request: Request, exc: HTTPException):
         statusCode=exc.status_code,
         message=str(exc.detail),
         timestamp=datetime.now(timezone.utc).isoformat(),
-        path=request.url.path
+        path=request.url.path 
     )
     return JSONResponse(
         status_code=exc.status_code,

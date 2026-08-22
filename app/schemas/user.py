@@ -12,6 +12,11 @@ class UserCreate(UserBase):
     role: str = "USER"
 
 
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
+
+
 class UserUpdate(BaseModel):
     email: EmailStr | None = None
     full_name: str | None = None
@@ -26,3 +31,7 @@ class UserResponse(UserBase):
     created_at: datetime
 
     model_config = ConfigDict(from_attributes=True)
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
